@@ -214,7 +214,7 @@ export default function Home() {
                 },
                 {
                   title: "UI/UX Piye APP",
-                  image: "/assets/img/piye.png",
+                  image: "/assets/img/Piye.png",
                   desc: "Piye APP adalah sebuah desain aplikasi yang dapat memesan makanan seperti gofood.",
                 },
               ].map((project, index) => (
