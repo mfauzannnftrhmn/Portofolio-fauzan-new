@@ -12,6 +12,7 @@ import RotatingText from "./components/RotatingText/RotatingText";
 import ShinyText from "./components/ShinyText/ShinyText";
 import StarBorder from "./components/StarBorder/StarBorder";
 import Magnet from "./components/Magnet/Magnet";
+import ClickSpark from "./components/ClickSpark/ClickSpark";
 
 const skills = [
   { name: "TypeScript", icon: <SiTypescript className="text-blue-600 text-3xl" /> },
@@ -40,13 +41,12 @@ export default function Home() {
       <meta property="og:description" content="Explore the works and profile of a passionate front-end developer and UI/UX designer." />
       <meta property="og:image" content="/assets/img/profile.jpg" />
       <meta property="og:type" content="website" />
-
-      <nav className="w-full bg-gray-950 shadow-md flex justify-between items-center px-6 py-4">
-        <div className="flex items-center gap-2">
-          <CodeIcon className="text-white-500 w-6 h-6" />
-          <span className="font-bold text-lg">
-            {" "}
-            <div className="hidden md:flex items-center gap-4">
+      <ClickSpark sparkColor="#fff" sparkSize={10} sparkRadius={15} sparkCount={8} duration={400}>
+        <nav className="w-full bg-gray-950 flex justify-center items-center px-6 py-4 relative">
+          {/* Rotating Text (posisi tengah) */}
+          <div className="flex justify-center items-center">
+            <div className="hidden md:flex items-center gap-2">
+              <CodeIcon className="text-white w-6 h-6" />
               <RotatingText
                 texts={["Welcome !", "To My Website Portfolio", "Enjoy !"]}
                 mainClassName="px-3 bg-white text-black py-1 rounded-md text-sm"
@@ -60,249 +60,243 @@ export default function Home() {
                 rotationInterval={2000}
               />
             </div>
-            {/* Versi mobile */}
+
+            {/* Mobile Text */}
             <div className="md:hidden text-sm font-semibold text-white bg-gray-800 px-3 py-1 rounded-md">Welcome to my portfolio!</div>
-          </span>
-        </div>
+          </div>
+        </nav>
 
-        {/* Tambahkan rotating text di sini */}
-      </nav>
+        {/* Hero Section */}
+        <section className="relative min-h-screen flex items-center justify-center bg-gray-900 text-white px-4 overflow-visible">
+          {/* Background Image */}
+          <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: "url('/assets/img/bg-pattern.jpg')" }}>
+            <div className="absolute inset-0 bg-black opacity-60"></div>
+          </div>
 
-      {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center bg-gray-900 text-white px-4">
-  {/* Background Image */}
-  <div
-    className="absolute inset-0 bg-cover bg-center"
-    style={{ backgroundImage: "url('/assets/img/bg-pattern.jpg')" }}
-  >
-    <div className="absolute inset-0 bg-black opacity-60"></div>
-  </div>
+          {/* HERO CONTENT */}
+          <div className="relative z-10 flex flex-col items-center text-center max-w-3xl">
+            <div className="flex justify-center mb-6">
+              <TiltedCard
+                imageSrc="/assets/img/profile.jpg"
+                altText="Muhammad Fauzan Faturrohman"
+                captionText="Muhammad Fauzan Faturrohman"
+                containerHeight="200px"
+                containerWidth="200px"
+                imageHeight="200px"
+                imageWidth="200px"
+                rotateAmplitude={12}
+                scaleOnHover={1.2}
+                showMobileWarning={false}
+                showTooltip={true}
+                displayOverlayContent={true}
+              />
+            </div>
 
-  {/* Content */}
-  <div className="relative z-10 flex flex-col items-center text-center max-w-3xl">
-    {/* FOTO */}
-    <div className="flex justify-center mb-6">
-      <TiltedCard
-        imageSrc="/assets/img/profile.jpg"
-        altText="Muhammad Fauzan Faturrohman"
-        captionText="Muhammad Fauzan Faturrohman"
-        containerHeight="200px"
-        containerWidth="200px"
-        imageHeight="200px"
-        imageWidth="200px"
-        rotateAmplitude={12}
-        scaleOnHover={1.2}
-        showMobileWarning={false}
-        showTooltip={true}
-        displayOverlayContent={true}
-      />
-    </div>
+            <h1 className="text-3xl md:text-5xl font-bold mb-4">
+              <ShinyText text="Hi, I'm Muhammad Fauzan Faturrohman" disabled={false} speed={2.5} className="custom-class" />
+            </h1>
 
-    {/* NAMA */}
-    <h1 className="text-3xl md:text-5xl font-bold mb-4">
-      <ShinyText
-        text="Hi, I'm Muhammad Fauzan Faturrohman"
-        disabled={false}
-        speed={2.5}
-        className="custom-class"
-      />
-    </h1>
-
-    {/* TYPING EFFECT */}
-    <p className="text-lg text-gray-300">
-      <Typewriter
-        words={["Front-end Developer", "UI/UX Designer", "Graphic Designer"]}
-        loop={true}
-        cursor
-        cursorStyle="_"
-        typeSpeed={70}
-        deleteSpeed={50}
-        delaySpeed={2000}
-      />
-    </p>
-  </div>
-</section>
-
-      {/* About Section */}
-      <section className="bg-gray-900 text-white py-10 px-4 md:px-16">
-        <motion.div className="max-w-6xl mx-auto flex flex-col md:flex-row items-start gap-10" initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, ease: "easeOut" }} viewport={{ once: true }}>
-          <div className="md:w-3/4">
-            <Magnet padding={100} disabled={false} magnetStrength={10}>
-              <h2 className="text-3xl font-bold mb-4 border-b border-gray-600 inline-block pb-2">About Me</h2>
-            </Magnet>
-            <p className="text-gray-300 leading-relaxed text-base md:text-lg text-justify">
-              Hello! I'm a passionate Informatics Engineering student involved in journalism and various organization & project activities. I’m highly motivated, adaptive, and eager to learn. My main interests lie in{" "}
-              <span className="text-cyan-400 font-semibold">Front-End Development</span> and <span className="text-cyan-400 font-semibold">UI/UX Design</span>, where I love turning ideas into clean, interactive interfaces.
+            <p className="text-lg text-gray-300">
+              <Typewriter words={["Front-end Developer", "UI/UX Designer", "Graphic Designer"]} loop={true} cursor cursorStyle="_" typeSpeed={70} deleteSpeed={50} delaySpeed={2000} />
             </p>
           </div>
-        </motion.div>
-      </section>
+        </section>
 
-      <section className="bg-gray-50 text-gray-900 py-20 px-4">
-        <div className="container mx-auto text-center">
-          <h2 className="text-3xl font-bold mb-6">Skills</h2>
-          <p className="text-gray-600 mb-10">Technologies & tools I work with:</p>
-
-          {/* Hard Skills */}
-          <Magnet padding={100} disabled={false} magnetStrength={10}>
-            <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-8 max-w-5xl mx-auto mb-16">
-              {skills.map((skill, index) => (
-                <motion.div
-                  key={index}
-                  whileHover={{ scale: 1.1 }}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.05 }}
-                  viewport={{ once: true }}
-                  className="flex flex-col items-center justify-center p-4 bg-white shadow-sm rounded-lg hover:shadow-md transition-all"
-                >
-                  <div className="mb-2">{skill.icon}</div>
-                  <p className="font-semibold text-sm text-gray-700">{skill.name}</p>
-                </motion.div>
-              ))}
+        {/* About Section */}
+        <section className="bg-gray-900 text-white py-10 px-4 md:px-16">
+          <motion.div className="max-w-6xl mx-auto flex flex-col md:flex-row items-start gap-10" initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, ease: "easeOut" }} viewport={{ once: true }}>
+            <div className="md:w-3/4">
+              <Magnet padding={100} disabled={false} magnetStrength={10}>
+                <h2 className="text-3xl font-bold mb-4 border-b border-gray-600 inline-block pb-2">About Me</h2>
+              </Magnet>
+              <p className="text-gray-300 leading-relaxed text-base md:text-lg text-justify">
+                Hello! I'm a passionate Informatics Engineering student involved in journalism and various organization & project activities. I’m highly motivated, adaptive, and eager to learn. My main interests lie in{" "}
+                <span className="text-cyan-400 font-semibold">Front-End Development</span> and <span className="text-cyan-400 font-semibold">UI/UX Design</span>, where I love turning ideas into clean, interactive interfaces.
+              </p>
             </div>
-          </Magnet>
+          </motion.div>
+        </section>
 
-          {/* Soft Skills Section */}
-          <div className="max-w-4xl mx-auto">
-            <h3 className="text-2xl font-semibold mb-6">✨ Soft Skills</h3>
-            <Magnet padding={100} disabled={false} magnetStrength={10}>
-              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
-                {[
-                  { name: "Creative Problem Solving", emoji: "🧠" },
-                  { name: "Team Collaboration", emoji: "👥" },
-                  { name: "Time Management", emoji: "⏰" },
-                  { name: "Critical Thinking", emoji: "💡" },
-                ].map((skill, index) => (
+        <section className="bg-gray-50 text-gray-900 py-20 px-4">
+          <div className="container mx-auto text-center">
+            <h2 className="text-3xl font-bold mb-6">Skills</h2>
+            <p className="text-gray-600 mb-10">Technologies & tools I work with:</p>
+
+            {/* Hard Skills */}
+            <Magnet padding={10} disabled={false} magnetStrength={10}>
+              <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-8 max-w-5xl mx-auto mb-16">
+                {skills.map((skill, index) => (
                   <motion.div
                     key={index}
-                    whileHover={{ scale: 1.05 }}
-                    initial={{ opacity: 0, y: 20 }}
+                    whileHover={{ scale: 1.1 }}
+                    initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.4, delay: index * 0.05 }}
+                    transition={{ duration: 0.5, delay: index * 0.05 }}
                     viewport={{ once: true }}
-                    className="bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-all text-center"
+                    className="flex flex-col items-center justify-center p-4 bg-white shadow-sm rounded-lg hover:shadow-md transition-all"
                   >
-                    <div className="text-3xl mb-2">{skill.emoji}</div>
-                    <p className="text-sm font-medium text-gray-700">{skill.name}</p>
+                    <div className="mb-2">{skill.icon}</div>
+                    <p className="font-semibold text-sm text-gray-700">{skill.name}</p>
                   </motion.div>
                 ))}
               </div>
             </Magnet>
-          </div>
-        </div>
-      </section>
 
-      {/* Projects Section */}
-      <motion.section className="bg-gray-900 py-20 px-4" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ duration: 0.8 }} viewport={{ once: true }}>
-        <div className="container mx-auto max-w-6xl">
-          <motion.h2 className="text-3xl font-semibold mb-10 border-b border-gray-700 pb-2 w-fit" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} viewport={{ once: true }}>
-            Projects
-          </motion.h2>
-          <StarBorder as="button" className="custom-class" color="cyan" speed="5s">
-            <div className="grid md:grid-cols-3 gap-8">
-              {[
-                {
-                  title: "Azalleart",
-                  image: "/assets/img/azalleart.png",
-                  desc: "Azalleart adalah layanan make-up profesional selain itu dapat menyewakan kostum dari adat, sampai kostum wisuda ",
-                },
-                {
-                  title: "SnaPolla",
-                  image: "/assets/img/snapolla.png",
-                  desc: "Snapolla adalah ruang digital sederhana estetik untuk mengabadikan momen dengan sentuhan unik, filter dramatis, dan hiasan manis.",
-                },
-                {
-                  title: "UI/UX Piye APP",
-                  image: "/assets/img/Piye.png",
-                  desc: "Piye APP adalah sebuah desain aplikasi yang dapat memesan makanan seperti gofood.",
-                },
-              ].map((project, index) => (
-                <motion.div
-                  key={index}
-                  className="bg-gray-800 p-6 rounded-2xl shadow-md transition"
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.1 * (index + 1) }}
-                  viewport={{ once: true }}
-                  whileHover={{
-                    scale: 1.03,
-                    y: -4,
-                    boxShadow: "0px 12px 20px rgba(0, 0, 0, 0.2)",
-                  }}
-                >
-                  <img src={project.image} alt={project.title} className="w-full h-48 object-cover rounded-t-2xl mb-4" />
-                  <h3 className="text-xl font-bold mb-2">{project.title}</h3>
-                  <p className="text-gray-400 text-sm mb-4">{project.desc}</p>
-                </motion.div>
-              ))}
+            {/* Soft Skills Section */}
+            <div className="max-w-4xl mx-auto">
+              <h3 className="text-2xl font-semibold mb-6">✨ Soft Skills</h3>
+              <Magnet padding={10} disabled={false} magnetStrength={10}>
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
+                  {[
+                    { name: "Creative Problem Solving", emoji: "🧠" },
+                    { name: "Team Collaboration", emoji: "👥" },
+                    { name: "Time Management", emoji: "⏰" },
+                    { name: "Critical Thinking", emoji: "💡" },
+                  ].map((skill, index) => (
+                    <motion.div
+                      key={index}
+                      whileHover={{ scale: 1.05 }}
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.4, delay: index * 0.05 }}
+                      viewport={{ once: true }}
+                      className="bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-all text-center"
+                    >
+                      <div className="text-3xl mb-2">{skill.emoji}</div>
+                      <p className="text-sm font-medium text-gray-700">{skill.name}</p>
+                    </motion.div>
+                  ))}
+                </div>
+              </Magnet>
             </div>
-          </StarBorder>
-        </div>
-      </motion.section>
-
-      {/* Social + Lanyard Side by Side */}
-      <section className="bg-gray-950">
-        <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 items-center gap-10">
-          {/* Kiri: Lanyard */}
-          <div className="flex justify-center items-center">
-            <Lanyard position={[0, 0, 13]} gravity={[0, -40, 0]} />
           </div>
+        </section>
 
-          {/* Kanan: Sosial Media */}
-          <motion.div className="text-center md:text-left md:pl-10" initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }} viewport={{ once: true }}>
-            <motion.h2 className="text-3xl font-semibold mb-2 border-b border-gray-700 pb-2 inline-block" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} viewport={{ once: true }}>
-              Reach me
+        {/* Projects Section */}
+        <motion.section className="bg-gray-900 py-20 px-4" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ duration: 0.8 }} viewport={{ once: true }}>
+          <div className="container mx-auto max-w-6xl">
+            <motion.h2 className="text-3xl font-semibold mb-10 border-b border-gray-700 pb-2 w-fit" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} viewport={{ once: true }}>
+              Projects
             </motion.h2>
-
-            <motion.p className="text-gray-400 mb-8" initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.1 }} viewport={{ once: true }}>
-              Follow me on :
-            </motion.p>
-
-            {/* Box Sosial Media */}
-            <motion.div
-              className="bg-gray-900 p-6 rounded-xl shadow-lg flex justify-center gap-6 flex-wrap max-w-md"
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
-              viewport={{ once: true }}
-            >
-              <motion.a href="https://github.com/mfauzannnftrhmn" target="_blank" rel="noopener noreferrer" className="bg-gray-800 hover:bg-gray-700 transition p-4 rounded-full" whileHover={{ scale: 1.1 }}>
-                <Github className="w-6 h-6 text-white" />
-              </motion.a>
-              <motion.a href="https://linkedin.com/in/mfauzannnf" target="_blank" rel="noopener noreferrer" className="bg-blue-600 hover:bg-blue-700 transition p-4 rounded-full" whileHover={{ scale: 1.1 }}>
-                <Linkedin className="w-6 h-6 text-white" />
-              </motion.a>
-              <motion.a href="https://instagram.com/mpauzanf" target="_blank" rel="noopener noreferrer" className="bg-sky-500 hover:bg-sky-600 transition p-4 rounded-full" whileHover={{ scale: 1.1 }}>
-                <Instagram className="w-6 h-6 text-white" />
-              </motion.a>
-            </motion.div>
-          </motion.div>
-        </div>
-      </section>
-
-      <footer className="bg-gray-900 text-gray-300 py-10 mt-20">
-        <div className="container mx-auto text-center">
-          {/* Social Media Links */}
-          <div className="mb-6">
-            <a href="https://github.com/mfauzannnftrhmn" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-white mx-4 transition-colors">
-              <Github className="w-6 h-6 inline-block" />
-            </a>
-            <a href="https://linkedin.com/in/mfauzannnf" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-white mx-4 transition-colors">
-              <Linkedin className="w-6 h-6 inline-block" />
-            </a>
-            <a href="https://instagram.com/mpauzanf" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-white mx-4 transition-colors">
-              <Instagram className="w-6 h-6 inline-block" />
-            </a>
+            <StarBorder as="button" className="custom-class" color="cyan" speed="5s">
+              <div className="grid md:grid-cols-3 gap-8">
+                {[
+                  {
+                    title: "Azalleart",
+                    image: "/assets/img/azalleart.png",
+                    desc: "Azalleart adalah layanan make-up profesional selain itu dapat menyewakan kostum dari adat, sampai kostum wisuda ",
+                  },
+                  {
+                    title: "SnaPolla",
+                    image: "/assets/img/snapolla.png",
+                    desc: "Snapolla adalah ruang digital sederhana estetik untuk mengabadikan momen dengan sentuhan unik, filter dramatis, dan hiasan manis.",
+                  },
+                  {
+                    title: "UI/UX Piye APP",
+                    image: "/assets/img/piye.png",
+                    desc: "Piye APP adalah sebuah desain aplikasi yang dapat memesan makanan seperti gofood.",
+                  },
+                ].map((project, index) => (
+                  <motion.div
+                    key={index}
+                    className="bg-gray-800 p-6 rounded-2xl shadow-md transition"
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: 0.1 * (index + 1) }}
+                    viewport={{ once: true }}
+                    whileHover={{
+                      scale: 1.03,
+                      y: -4,
+                      boxShadow: "0px 12px 20px rgba(0, 0, 0, 0.2)",
+                    }}
+                  >
+                    <img src={project.image} alt={project.title} className="w-full h-48 object-cover rounded-t-2xl mb-4" />
+                    <h3 className="text-xl font-bold mb-2">{project.title}</h3>
+                    <p className="text-gray-400 text-sm mb-4">{project.desc}</p>
+                  </motion.div>
+                ))}
+              </div>
+            </StarBorder>
           </div>
+        </motion.section>
 
-          {/* Copyright Text */}
-          <p className="text-sm">&copy; {new Date().getFullYear()} M Fauzan F. All rights reserved.</p>
+        {/* Social + Lanyard Side by Side */}
+        <section className="bg-gray-950">
+          <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 items-center gap-10">
+            {/* Kiri: Lanyard */}
+            <div className="flex justify-center items-center">
+              <Lanyard position={[0, 0, 13]} gravity={[0, -40, 0]} />
+            </div>
 
-          {/* Optional Divider Line */}
-          <div className="mt-6 border-t border-gray-700 w-1/2 mx-auto"></div>
-        </div>
-      </footer>
+            {/* Kanan: Sosial Media */}
+            <motion.div className="text-center md:text-left md:pl-10" initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }} viewport={{ once: true }}>
+              <motion.h2 className="text-3xl font-semibold mb-2 border-b border-gray-700 pb-2 inline-block" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} viewport={{ once: true }}>
+                Reach me
+              </motion.h2>
+
+              <motion.p className="text-gray-400 mb-8" initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.1 }} viewport={{ once: true }}>
+                Follow me on :
+              </motion.p>
+
+              {/* Box Sosial Media */}
+              <motion.div
+                className="bg-gray-900 p-6 rounded-xl shadow-lg flex justify-center gap-6 flex-wrap max-w-md"
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
+                viewport={{ once: true }}
+              >
+                <motion.a href="https://github.com/mfauzannnftrhmn" target="_blank" rel="noopener noreferrer" className="bg-gray-800 hover:bg-gray-700 transition p-4 rounded-full" whileHover={{ scale: 1.1 }}>
+                  <Github className="w-6 h-6 text-white" />
+                </motion.a>
+                <motion.a href="https://linkedin.com/in/mfauzannnf" target="_blank" rel="noopener noreferrer" className="bg-blue-600 hover:bg-blue-700 transition p-4 rounded-full" whileHover={{ scale: 1.1 }}>
+                  <Linkedin className="w-6 h-6 text-white" />
+                </motion.a>
+                <motion.a href="https://instagram.com/mpauzanf" target="_blank" rel="noopener noreferrer" className="bg-sky-500 hover:bg-sky-600 transition p-4 rounded-full" whileHover={{ scale: 1.1 }}>
+                  <Instagram className="w-6 h-6 text-white" />
+                </motion.a>
+              </motion.div>
+            </motion.div>
+          </div>
+        </section>
+
+        <footer className="bg-gray-900 text-gray-300 py-10 mt-20">
+          <div className="container mx-auto px-4 text-center">
+            {/* Social Media Links */}
+            <div className="mb-6 flex justify-center gap-6">
+              <a href="https://github.com/mfauzannnftrhmn" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-white transition-colors">
+                <Github className="w-6 h-6" />
+              </a>
+              <a href="https://linkedin.com/in/mfauzannnf" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-white transition-colors">
+                <Linkedin className="w-6 h-6" />
+              </a>
+              <a href="https://instagram.com/mpauzanf" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-white transition-colors">
+                <Instagram className="w-6 h-6" />
+              </a>
+            </div>
+
+            {/* Email Contact */}
+            <div className="mb-4 text-sm flex justify-center items-center gap-2">
+              <span className="text-white">📧</span>
+              <a href="https://mail.google.com/mail/?view=cm&fs=1&to=fauzanf2808@gmail.com" target="_blank" rel="noopener noreferrer" className="hover:underline text-gray-300 hover:text-white transition-colors">
+                fauzanf2808@gmail.com
+              </a>
+            </div>
+
+            {/* Divider Line */}
+            <div className="mt-6 border-t border-gray-700 w-1/2 mx-auto"></div>
+
+            {/* Copyright */}
+            <p className="text-xs text-gray-500 mt-4">
+              &copy; {new Date().getFullYear()}{" "}
+              <button onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} className="text-gray-400 hover:underline transition-all">
+                M Fauzan F
+              </button>
+              . All rights reserved.
+            </p>
+          </div>
+        </footer>
+      </ClickSpark>
     </div>
   );
 }
